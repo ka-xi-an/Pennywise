@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #f3f4f7;
+  --surface-3: #e9ecf1;
+  --line: #e3e6ec;
+  --line-strong: #cfd4dc;
+  --fg: #0c1424;
+  --fg-2: #46526a;
+  --muted: #7c879b;
+  --navy: #0f1b33;
+  --accent: #2563eb;
+  --accent-fg: #ffffff;
+  --accent-soft: #e8efff;
+  --pos: #047857;
+  --pos-soft: #e3f6ee;
+  --neg: #c2362f;
+  --neg-soft: #fde9e7;
+  --warn: #a15c00;
+  --warn-soft: #fff3dc;
+  --info: #1d5fbf;
+  --info-soft: #e6f0fd;
+  --ai: #6d3fd6;
+  --ai-soft: #f0eafd;
+  --ring: #2563eb55;
+  --shadow: 0 1px 2px rgba(12, 20, 36, 0.04), 0 1px 1px rgba(12, 20, 36, 0.03);
+  --shadow-lg: 0 12px 32px -8px rgba(12, 20, 36, 0.18), 0 2px 6px rgba(12, 20, 36, 0.06);
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0a0e15;
+  --surface: #111723;
+  --surface-2: #161e2d;
+  --surface-3: #1d2738;
+  --line: #222c3d;
+  --line-strong: #2f3b50;
+  --fg: #e8edf5;
+  --fg-2: #a9b3c4;
+  --muted: #78849a;
+  --navy: #0b1220;
+  --accent: #5b8def;
+  --accent-fg: #0a0e15;
+  --accent-soft: #18264a;
+  --pos: #34c38f;
+  --pos-soft: #0f2a22;
+  --neg: #f0726a;
+  --neg-soft: #33171a;
+  --warn: #f0b44c;
+  --warn-soft: #2e2412;
+  --info: #6ea8f5;
+  --info-soft: #14233d;
+  --ai: #a98bf5;
+  --ai-soft: #231a3d;
+  --ring: #5b8def66;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 40px -8px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-muted: var(--muted);
+  --color-navy: var(--navy);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-pos: var(--pos);
+  --color-pos-soft: var(--pos-soft);
+  --color-neg: var(--neg);
+  --color-neg-soft: var(--neg-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-ai: var(--ai);
+  --color-ai-soft: var(--ai-soft);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", monospace;
+  --shadow-card: var(--shadow);
+  --shadow-pop: var(--shadow-lg);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+/* Native dialog */
+dialog::backdrop {
+  background: rgba(8, 12, 20, 0.45);
+  backdrop-filter: blur(2px);
+}
+dialog[open] {
+  animation: pop 140ms ease-out;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-in {
+  animation: fade-in 180ms ease-out both;
+}
+
+/* Recharts tweaks */
+.recharts-cartesian-grid line {
+  stroke: var(--line);
+}
+.recharts-text {
+  fill: var(--muted);
+  font-size: 11px;
+}
+.recharts-surface:focus,
+.recharts-wrapper:focus,
+.recharts-sector:focus {
+  outline: none;
+}
+
+/* Scrollbars */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+/* Print: reports become clean PDFs via the browser's "Save as PDF" */
+@media print {
+  .no-print,
+  aside,
+  header.app-header,
+  nav.mobile-nav {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  body,
+  html {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .print-card {
+    box-shadow: none !important;
+    border-color: #ddd !important;
+    break-inside: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
