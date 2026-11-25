@@ -70,4 +70,8 @@ scrypt password hashing · hashed session tokens in httpOnly/SameSite cookies ·
 - Statements and analytics are in the base currency; foreign-currency items need user-entered exchange rates and are excluded (with a warning) when one is missing.
 - SQLite is for development/single-user use; use PostgreSQL in production.
 
+## License
+
+[MIT](LICENSE) © 2026 ka-xi-an. Tax and financial figures are planning estimates, not professional advice.
+
 More detail: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) · [docs/CALCULATIONS.md](docs/CALCULATIONS.md)

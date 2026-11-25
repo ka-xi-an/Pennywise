@@ -2,6 +2,7 @@
   "name": "ledgerline",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "Ledgerline — personal finance & wealth management platform",
   "scripts": {
     "dev": "node node_modules/next/dist/bin/next dev",
